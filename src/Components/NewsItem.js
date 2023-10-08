@@ -15,7 +15,7 @@ export class NewsItem extends Component {
     {source}
     
   </span>
-  <img src={!imageurl?"https://www.hindustantimes.com/ht-img/img/2023/09/18/1600x900/Darkweb--darknet-and-hacking-concept--Hacker-with-_1690898999499_1695036729169.jpg":imageurl} className="card-img-top" alt="..."/>
+  <img  src={!imageurl?"https://www.hindustantimes.com/ht-img/img/2023/09/18/1600x900/Darkweb--darknet-and-hacking-concept--Hacker-with-_1690898999499_1695036729169.jpg":imageurl} className="card-img-top" alt="..."/>
   <div className="card-body">
     
     <h5 className="card-title">{title}
