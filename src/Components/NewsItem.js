@@ -1,10 +1,10 @@
-import { getByDisplayValue } from '@testing-library/react';
-import React, { Component } from 'react'
 
-export class NewsItem extends Component {
+import React from 'react'
 
-  render() {
-    let {title,description,imageurl,newsurl,author ,date,source}=this.props;
+// export class NewsItem extends Component {
+const NewsItem=(props)=>{
+  // render() {
+    let {title,description,imageurl,newsurl,author ,date,source}=props;
     let d=new Date(date).toUTCString();
 
 
@@ -32,7 +32,7 @@ export class NewsItem extends Component {
 </div>
 </div>
     )
-  }
+  // }
 }
 
 export default NewsItem
