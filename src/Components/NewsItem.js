@@ -1,3 +1,4 @@
+import { getByDisplayValue } from '@testing-library/react';
 import React, { Component } from 'react'
 
 export class NewsItem extends Component {
@@ -9,13 +10,15 @@ export class NewsItem extends Component {
 
     return (
        < div className="my-3 mx-2">
-        
+      
         <div className="card" >
-        <span className="position-absolute top-0  translate-middle badge rounded-pill bg-danger" style={{left:'90%' , zIndex:'1'}}>
+        <div style={{display:'flex',justifyContent:'flex-end',position:'absolute',right:'0'}}> 
+        <span className="rounded-pill bg-danger"  >
     {source}
     
   </span>
-  <img  src={!imageurl?"https://www.hindustantimes.com/ht-img/img/2023/09/18/1600x900/Darkweb--darknet-and-hacking-concept--Hacker-with-_1690898999499_1695036729169.jpg":imageurl} className="card-img-top" alt="..."/>
+  </div>
+  <img src={!imageurl?"https://www.hindustantimes.com/ht-img/img/2023/09/18/1600x900/Darkweb--darknet-and-hacking-concept--Hacker-with-_1690898999499_1695036729169.jpg":imageurl} className="card-img-top" alt="..."/>
   <div className="card-body">
     
     <h5 className="card-title">{title}

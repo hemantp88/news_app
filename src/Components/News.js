@@ -23,7 +23,7 @@ export class News extends Component {
     super(props);
     this.state = {
       articles: [],
-      loading: false,
+      loading: true,
       page: 1,
       totalResults:0
     };
@@ -44,16 +44,20 @@ export class News extends Component {
     // })
   }
   async UpdateNews() {
+    this.props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=20d14143701948c9815db87797446b6b&page=1&pageSize=${this.props.pagesize}`;
     this.setState({ loading: true });
+    this.props.setProgress(30);
     let data = await fetch(url);
     let parsedData = await data.json();
+    this.props.setProgress(70);
     // console.log(parsedData);
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false,
     });
+    this.props.setProgress(100);
   }
   handleNextClick = async () => {
     this.setState({ page: this.state.page + 1 });
@@ -107,26 +111,18 @@ export class News extends Component {
   render() {
     return (
       <div className="container my-3">
-        {/* { this.state.loading&&<Spinner/>} */}
+        
 
         <h2 className="text-center">
           News : Top headlines from {this.capitalizeFirst(this.props.category)}
         </h2>
-        {/* <InfiniteScroll
-          dataLength={this.state.articles.length}
-          next={this.fetchMoreData}
-          style={{ display: "flex", flexDirection: "column-reverse" }} //To put endMessage and loader to the top.
-          inverse={true}
-          hasMore={this.state.articles.length !== this.state.totalResults}
-          // loader={<Spinner />}
-          loader={<h4>Loading...</h4>}
-          scrollableTarget="scrollableDiv"
-        > */}
+        { this.state.loading&&<Spinner/>}
+       
         <InfiniteScroll
           dataLength={this.state.articles.length}
           next={this.fetchMoreData}
           hasMore={this.state.articles.length !== this.state.totalResults}
-          // loader={<h4>Loading...</h4>}
+
           loader={<Spinner />}
 
 >
