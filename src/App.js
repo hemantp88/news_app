@@ -15,7 +15,9 @@ import {
 
 export default class App extends Component {
   pageSize=10;
-  apiKey=process.env.REACT_APP_NEWS_API;
+  // apiKey=process.env.REACT_APP_NEWS_API;
+    apiKey = "11eaac8fa362428e8d79e00287f17cf1";
+
   state={
     progress:0 
   }
